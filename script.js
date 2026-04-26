@@ -225,11 +225,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     }
 
-    // --- Support button ripple effect ---
+    // --- Support Counter (localStorage) ---
+    const supportCountEl = document.getElementById('supportCount');
+    let supportCount = parseInt(localStorage.getItem('foxDefenderSupport') || '0', 10);
+
+    function animateCount(el, target) {
+        const start = parseInt(el.textContent, 10) || 0;
+        if (start === target) { el.textContent = target; return; }
+        const duration = 600;
+        const startTime = performance.now();
+        function step(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(start + (target - start) * eased);
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    if (supportCountEl) {
+        supportCountEl.textContent = supportCount;
+        supportCountEl.setAttribute('data-count', supportCount);
+    }
+
+    // --- Support button ---
     const supportBtn = document.querySelector('.support-btn');
     if (supportBtn) {
         supportBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+            // Ripple effect
             const ripple = document.createElement('span');
             ripple.style.cssText = `
                 position: absolute;
@@ -246,6 +269,14 @@ document.addEventListener('DOMContentLoaded', () => {
             ripple.style.top = (e.clientY - rect.top) + 'px';
             this.appendChild(ripple);
             setTimeout(() => ripple.remove(), 600);
+
+            // Increment support counter
+            supportCount++;
+            localStorage.setItem('foxDefenderSupport', supportCount);
+            if (supportCountEl) {
+                animateCount(supportCountEl, supportCount);
+                supportCountEl.setAttribute('data-count', supportCount);
+            }
         });
 
         // Add ripple keyframes
@@ -256,6 +287,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         `;
         document.head.appendChild(style);
+    }
+
+    // --- Hero support button also links to DonationAlerts ---
+    const heroSupportBtn = document.querySelector('.hero-actions .btn-primary');
+    if (heroSupportBtn) {
+        heroSupportBtn.setAttribute('href', 'https://www.donationalerts.com/r/medbecher');
+        heroSupportBtn.setAttribute('target', '_blank');
+        heroSupportBtn.setAttribute('rel', 'noopener noreferrer');
     }
 
     // --- Parallax on hero background image ---
