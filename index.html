@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fox Defender — Defend the Skies in VR</title>
+    <meta name="description" content="Fox Defender — VR игра на Unity, где вы защищаете самолёт от нашествия маленьких лисят. Проект в разработке.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cursor glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particles canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="logo.png" alt="Fox Defender" class="logo-img">
+                <span class="logo-text">Fox<span class="logo-accent">Defender</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#about">Об игре</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#vr">VR</a></li>
+                <li><a href="#support">Поддержка</a></li>
+            </ul>
+            <div class="nav-right">
+                <span class="status-badge">
+                    <span class="status-dot"></span>
+                    В разработке
+                </span>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-image"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge" data-animate="fade-up">
+                <span class="status-dot"></span>
+                Unity VR Project — In Development
+            </div>
+            <h1 class="hero-title" data-animate="fade-up" data-delay="100">
+                <span class="title-line">FOX</span>
+                <span class="title-line title-accent">DEFENDER</span>
+            </h1>
+            <p class="hero-subtitle" data-animate="fade-up" data-delay="200">
+                Защити самолёт от нашествия маленьких лисят в захватывающем VR-приключении
+            </p>
+            <div class="hero-actions" data-animate="fade-up" data-delay="300">
+                <a href="#support" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    Поддержать проект
+                </a>
+                <a href="#about" class="btn btn-secondary">
+                    Узнать больше
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Об игре</span>
+                <h2 class="section-title">Добро пожаловать в мир <span class="text-accent">Fox Defender</span></h2>
+                <p class="section-desc">Уникальная VR-игра, где вам предстоит стать последним рубежом обороны в небе</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card" data-animate="fade-up" data-delay="100">
+                    <div class="about-card-icon">
+                        <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_scenario.svg" alt="Сюжет" class="tilda-icon">
+                    </div>
+                    <h3>Сюжет</h3>
+                    <p>Маленькие лисята решили захватить небо! Ваш самолёт — последняя надежда. Защищайте его от волн пушистых захватчиков, используя арсенал оборонительного вооружения.</p>
+                </div>
+                <div class="about-card" data-animate="fade-up" data-delay="200">
+                    <div class="about-card-icon">
+                        <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_game.svg" alt="Геймплей" class="tilda-icon">
+                    </div>
+                    <h3>Геймплей</h3>
+                    <p>Динамичные волны атак, нарастающая сложность, разнообразные типы лисят с уникальными способностями. Каждый раунд — новый вызов вашей реакции и стратегии.</p>
+                </div>
+                <div class="about-card" data-animate="fade-up" data-delay="300">
+                    <div class="about-card-icon">
+                        <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_animation.svg" alt="Мир" class="tilda-icon">
+                    </div>
+                    <h3>Мир</h3>
+                    <p>Стилизованная графика с яркими красками, детализированные модели лисят, впечатляющие эффекты разрушений и погодные условия, меняющие правила игры.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Особенности</span>
+                <h2 class="section-title">Что делает <span class="text-accent">Fox Defender</span> особенной</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-animate="fade-up" data-delay="0">
+                    <div class="feature-number">01</div>
+                    <div class="feature-icon"><img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_vr.svg" alt="VR" class="tilda-icon-feature"></div>
+                    <h3>VR Иммерсивность</h3>
+                    <p>Полное погружение в воздушный бой благодаря VR-технологиям. Ощутите высоту и скорость как никогда раньше.</p>
+                </div>
+                <div class="feature-card" data-animate="fade-up" data-delay="100">
+                    <div class="feature-number">02</div>
+                    <div class="feature-icon"><img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_effective.svg" alt="Враги" class="tilda-icon-feature"></div>
+                    <h3>Уникальные враги</h3>
+                    <p>Десятки видов лисят — от обычных до босс-лисов. Каждый с уникальным поведением и стратегией атаки.</p>
+                </div>
+                <div class="feature-card" data-animate="fade-up" data-delay="200">
+                    <div class="feature-number">03</div>
+                    <div class="feature-icon"><img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_prototype.svg" alt="Модификации" class="tilda-icon-feature"></div>
+                    <h3>Модификации</h3>
+                    <p>Улучшайте свой самолёт, открывайте новое оружие и защитные системы для противостояния всё более сильным волнам.</p>
+                </div>
+                <div class="feature-card" data-animate="fade-up" data-delay="300">
+                    <div class="feature-number">04</div>
+                    <div class="feature-icon"><img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_startup.svg" alt="Прогресс" class="tilda-icon-feature"></div>
+                    <h3>Система прогресса</h3>
+                    <p>Зарабатывайте очки, проходите испытания, открывайте достижения и поднимайтесь в рейтинге лучших защитников.</p>
+                </div>
+                <div class="feature-card" data-animate="fade-up" data-delay="400">
+                    <div class="feature-number">05</div>
+                    <div class="feature-icon"><img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_app.svg" alt="Саундтрек" class="tilda-icon-feature"></div>
+                    <h3>Саундтрек</h3>
+                    <p>Захватывающая музыка и объёмный 3D-звук создают неповторимую атмосферу напряжённого воздушного боя.</p>
+                </div>
+                <div class="feature-card" data-animate="fade-up" data-delay="500">
+                    <div class="feature-number">06</div>
+                    <div class="feature-icon"><img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_game.svg" alt="Реиграбельность" class="tilda-icon-feature"></div>
+                    <h3>Реиграбельность</h3>
+                    <p>Процедурная генерация волн, случайные события и бонусы — каждая сессия уникальна и непредсказуема.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VR Section -->
+    <section class="section vr-section" id="vr">
+        <div class="container">
+            <div class="vr-content">
+                <div class="vr-text" data-animate="fade-right">
+                    <span class="section-tag">Технологии</span>
+                    <h2 class="section-title">Создано для <span class="text-accent">виртуальной реальности</span></h2>
+                    <p class="vr-desc">Fox Defender разрабатывается на движке <strong>Unity</strong> с использованием передовых VR-технологий для максимального погружения в игровой процесс.</p>
+                    <div class="vr-specs">
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_technical.svg" alt="Unity" class="tilda-icon-spec">
+                            </div>
+                            <div>
+                                <strong>Unity Engine</strong>
+                                <span>Мощный и гибкий движок</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_vr.svg" alt="VR" class="tilda-icon-spec">
+                            </div>
+                            <div>
+                                <strong>VR Гарнитура</strong>
+                                <span>Полное погружение в мир игры</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_game.svg" alt="6DoF" class="tilda-icon-spec">
+                            </div>
+                            <div>
+                                <strong>6DoF Управление</strong>
+                                <span>Полная свобода движений</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <img src="Tilda Icons_40_IT Company/Tilda_Icons_40_IT_effective.svg" alt="FPS" class="tilda-icon-spec">
+                            </div>
+                            <div>
+                                <strong>Оптимизация</strong>
+                                <span>Стабильные 90 FPS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vr-visual" data-animate="fade-left">
+                    <div class="vr-headset-container">
+                        <div class="vr-glow"></div>
+                        <div class="vr-headset">
+                            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="20" width="180" height="80" rx="20" fill="url(#vrGrad)" stroke="#FF6B35" stroke-width="2"/>
+                                <circle cx="70" cy="60" r="25" fill="#1a1a2e" stroke="#FF6B35" stroke-width="1.5"/>
+                                <circle cx="130" cy="60" r="25" fill="#1a1a2e" stroke="#FF6B35" stroke-width="1.5"/>
+                                <circle cx="70" cy="60" r="12" fill="#FF6B35" opacity="0.3"/>
+                                <circle cx="130" cy="60" r="12" fill="#FF6B35" opacity="0.3"/>
+                                <path d="M5 50 Q0 60 5 70" stroke="#FF6B35" stroke-width="2" fill="none"/>
+                                <path d="M195 50 Q200 60 195 70" stroke="#FF6B35" stroke-width="2" fill="none"/>
+                                <defs>
+                                    <linearGradient id="vrGrad" x1="10" y1="20" x2="190" y2="100">
+                                        <stop offset="0%" stop-color="#16213e"/>
+                                        <stop offset="100%" stop-color="#1a1a2e"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="vr-rings">
+                            <div class="vr-ring"></div>
+                            <div class="vr-ring"></div>
+                            <div class="vr-ring"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dev Status Section -->
+    <section class="section dev-status">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Статус разработки</span>
+                <h2 class="section-title">Дорожная карта <span class="text-accent">проекта</span></h2>
+            </div>
+            <div class="roadmap" data-animate="fade-up" data-delay="100">
+                <div class="roadmap-item active">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <span class="roadmap-phase">Фаза 1</span>
+                        <h3>Концепт и прототип</h3>
+                        <p>Разработка концепции, создание прототипа механик</p>
+                        <span class="roadmap-status done">Завершено</span>
+                    </div>
+                </div>
+                <div class="roadmap-item active current">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <span class="roadmap-phase">Фаза 2</span>
+                        <h3>Основная разработка</h3>
+                        <p>Создание игровых механик, моделей, уровней</p>
+                        <span class="roadmap-status in-progress">В процессе</span>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <span class="roadmap-phase">Фаза 3</span>
+                        <h3>Тестирование</h3>
+                        <p>Альфа и бета тестирование, оптимизация VR</p>
+                        <span class="roadmap-status">Скоро</span>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <span class="roadmap-phase">Фаза 4</span>
+                        <h3>Релиз</h3>
+                        <p>Публикация игры и пост-релизная поддержка</p>
+                        <span class="roadmap-status">Планируется</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section support" id="support">
+        <div class="container">
+            <div class="support-card" data-animate="fade-up">
+                <div class="support-glow"></div>
+                <div class="support-content">
+                    <span class="section-tag">Поддержка</span>
+                    <h2 class="section-title">Помогите <span class="text-accent">Fox Defender</span> стать реальностью</h2>
+                    <p class="support-desc">Ваша поддержка позволяет нам продолжать разработку и делать игру ещё лучше. Каждый вклад приближает релиз!</p>
+                    <div class="support-buttons">
+                        <a href="#" class="btn btn-primary btn-large support-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            Поддержать проект
+                        </a>
+                    </div>
+                    <div class="support-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-count="0">0</span>
+                            <span class="stat-label">Поддержали</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number">Early</span>
+                            <span class="stat-label">Стадия</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number">VR</span>
+                            <span class="stat-label">Платформа</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="Fox Defender" class="logo-img logo-img-footer">
+                    <span class="logo-text">Fox<span class="logo-accent">Defender</span></span>
+                    <p class="footer-tagline">Защити небо от пушистого нашествия</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Главная</a>
+                    <a href="#about">Об игре</a>
+                    <a href="#features">Особенности</a>
+                    <a href="#vr">VR</a>
+                    <a href="#support">Поддержка</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Fox Defender. Все права защищены.</p>
+                    <div class="footer-status">
+                        <span class="status-dot"></span>
+                        Проект в активной разработке
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
